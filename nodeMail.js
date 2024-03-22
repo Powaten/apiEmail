@@ -16,10 +16,9 @@ const nodeMailerSendEmail = async (data) => {
   const mailOptions = {
     from: `Alena Whaten ${sender.email}`,
     to: receiversMail,
-
     subject: subject,
     text: message,
-    // replyTo: replyToEmail,
+    replyTo: replyToEmail ? replyToEmail : "",
   };
 
   // const res = await transport.sendMail(mailOptions);
