@@ -12,6 +12,12 @@ app.use(cors());
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
+app.get("/home", function (req, res) {
+  console.log(req.body);
+
+  res.send("Hello from the server");
+});
+
 app.post("/my/webhook/url", function (req, res) {
   //validate event
   const hash = crypto
