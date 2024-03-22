@@ -1,0 +1,26 @@
+{
+  "name": "apigas",
+  "version": "1.0.0",
+  "description": "Api to generate backend server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Ebuka Gabriel",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "express": "^4.18.2",
+    "mailersend": "^2.2.0",
+    "nodemailer": "^6.9.12",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5"
+  }
+}
