@@ -5,6 +5,8 @@ const mailerSend = new MailerSend({
   apiKey: process.env.API_KEY,
 });
 
+// async function verifyEmail
+
 async function sendEmailNow(req, res) {
   // const sentFrom = new Sender(
   //   "services@jonzehfoundation.com.ng",

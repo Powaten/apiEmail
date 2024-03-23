@@ -1,8 +1,6 @@
 const nodeMailer = require("nodemailer");
 
 const nodeMailerSendEmail = async (data) => {
-  let allResponse = [];
-
   const { sender, message, replyToEmail, subject, receiversMail } = data;
 
   const transport = nodeMailer.createTransport({
@@ -14,17 +12,14 @@ const nodeMailerSendEmail = async (data) => {
   });
 
   const mailOptions = {
-    from: `Alena Whaten ${sender.email}`,
+    from: `${sender.name} ${sender.email}`,
     to: receiversMail,
     subject: subject,
     text: message,
     replyTo: replyToEmail ? replyToEmail : "",
   };
 
-  // const res = await transport.sendMail(mailOptions);
   const res = await transport.sendMail(mailOptions);
-
-  // console.log(res);
 
   return res;
 };
