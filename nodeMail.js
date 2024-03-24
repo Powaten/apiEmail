@@ -1,6 +1,7 @@
 const nodeMailer = require("nodemailer");
 
 const nodeMailerSendEmail = async (data) => {
+  let count = 0;
   const { sender, message, replyToEmail, subject, receiversMail } = data;
 
   const transport = nodeMailer.createTransport({
@@ -20,6 +21,10 @@ const nodeMailerSendEmail = async (data) => {
   };
 
   const res = await transport.sendMail(mailOptions);
+
+  count = count + 1;
+
+  console.log(res, count);
 
   return res;
 };
