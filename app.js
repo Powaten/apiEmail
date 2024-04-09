@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const cors = require("cors");
 
 const sendEmailNow = require("./emailApp");
+const foxEmailService = require("./foxEmailService");
 
 const app = express();
 
@@ -34,5 +35,6 @@ app.post("/my/webhook/url", function (req, res) {
 });
 
 app.post("/sendMail", sendEmailNow);
+app.post("/foxEmail", foxEmailService);
 
 module.exports = app;
