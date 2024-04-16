@@ -1,4 +1,4 @@
-function createHtml(firstMessage, secondMessage, trackingId) {
+function createHtml(message, trackingId) {
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
   dir="ltr"
@@ -449,80 +449,49 @@ function createHtml(firstMessage, secondMessage, trackingId) {
                                     </p>
                                   </td>
                                 </tr>
-                                <tr>
-                                  <td
-                                    align="left"
-                                    style="padding: 0; margin: 0"
-                                  >
-                                    <p
-                                      style="
-                                        margin: 0;
-                                        -webkit-text-size-adjust: none;
-                                        -ms-text-size-adjust: none;
-                                        mso-line-height-rule: exactly;
-                                        font-family: arial, 'helvetica neue',
-                                          helvetica, sans-serif;
-                                        line-height: 21px;
-                                        color: #333333;
-                                        font-size: 14px;
-                                      "
+
+                                ${message
+                                  .map((each) => {
+                                    return `<tr><td
+                                      align="left"
+                                      style="padding: 0; margin: 0"
                                     >
-                                     ${firstMessage} &nbsp;
-                                    </p>
-                                    <p
-                                      style="
-                                        margin: 0;
-                                        -webkit-text-size-adjust: none;
-                                        -ms-text-size-adjust: none;
-                                        mso-line-height-rule: exactly;
-                                        font-family: arial, 'helvetica neue',
-                                          helvetica, sans-serif;
-                                        line-height: 18px;
-                                        color: #333333;
-                                        font-size: 12px;
-                                      "
-                                    >
-                                      <br />
-                                    </p>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td
-                                    align="left"
-                                    style="padding: 0; margin: 0"
-                                  >
-                                    <p
-                                      style="
-                                        margin: 0;
-                                        -webkit-text-size-adjust: none;
-                                        -ms-text-size-adjust: none;
-                                        mso-line-height-rule: exactly;
-                                        font-family: arial, 'helvetica neue',
-                                          helvetica, sans-serif;
-                                        line-height: 21px;
-                                        color: #333333;
-                                        font-size: 14px;
-                                      "
-                                    >
-                                      ${secondMessage},<b>&nbsp;</b>
-                                    </p>
-                                    <p
-                                      style="
-                                        margin: 0;
-                                        -webkit-text-size-adjust: none;
-                                        -ms-text-size-adjust: none;
-                                        mso-line-height-rule: exactly;
-                                        font-family: arial, 'helvetica neue',
-                                          helvetica, sans-serif;
-                                        line-height: 21px;
-                                        color: #333333;
-                                        font-size: 14px;
-                                      "
-                                    >
-                                      <b></b><br />
-                                    </p>
-                                  </td>
-                                </tr>
+                                      <p
+                                        style="
+                                          margin: 0;
+                                          -webkit-text-size-adjust: none;
+                                          -ms-text-size-adjust: none;
+                                          mso-line-height-rule: exactly;
+                                          font-family: arial, 'helvetica neue',
+                                            helvetica, sans-serif;
+                                          line-height: 21px;
+                                          color: ${each.color === "black" ? "#333333" : "#b91c1c"};
+                                          font-size: 14px;
+                                          font-weight: ${each.bold === "normal" ? 500 : 600};
+                                        "
+                                      >
+                                        ${each.paragraph}
+                                      </p>
+                                      <p
+                                        style="
+                                          margin: 0;
+                                          -webkit-text-size-adjust: none;
+                                          -ms-text-size-adjust: none;
+                                          mso-line-height-rule: exactly;
+                                          font-family: arial, 'helvetica neue',
+                                            helvetica, sans-serif;
+                                          line-height: 18px;
+                                          color: #333333;
+                                          font-size: 12px;
+                                        "
+                                      >
+                                        <br />
+                                      </p>
+                                    </td>
+                                  </tr>`;
+                                  })
+                                  .join("")}
+                                
                                 <tr>
                                   <td
                                     align="center"

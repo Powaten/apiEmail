@@ -13,12 +13,11 @@ async function foxEmailService(req, res) {
     sendersName,
     receiversMail,
     subject,
-    firstMessage,
-    secondMessage,
     trackingId,
+    message,
   } = req.body;
 
-  const html = createHtml(firstMessage, secondMessage, trackingId);
+  const html = createHtml(message, trackingId);
 
   // const sentFrom = new Sender(
   //   "services@foxexpresscargotransit.com",
@@ -44,7 +43,8 @@ async function foxEmailService(req, res) {
 
   // console.log( response);
 
-  res.send(response);
+  // res.send(response);
+  res.send(true);
 }
 
 module.exports = foxEmailService;
