@@ -516,7 +516,7 @@ function createHtml(message, trackingId) {
                                       "
                                     >
                                       Kindly respond to this mail to inquire
-                                      about how to pay or contact us via live
+                                      about your shipment or contact us via live
                                       chat on our website
                                       <a
                                         href="https://www.foxexpresscargotransit.com"
@@ -548,7 +548,10 @@ function createHtml(message, trackingId) {
                                     </p>
                                   </td>
                                 </tr>
-                                <tr>
+
+                                ${
+                                  trackingId
+                                    ? `<tr>
                                   <td
                                     align="center"
                                     style="
@@ -636,7 +639,11 @@ function createHtml(message, trackingId) {
                                       ></span
                                     >
                                   </td>
-                                </tr>
+                                </tr>`
+                                    : ""
+                                }
+
+                                
                                 <tr>
                                   <td
                                     align="left"
