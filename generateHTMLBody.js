@@ -515,9 +515,7 @@ function createHtml(message, trackingId) {
                                         font-size: 14px;
                                       "
                                     >
-                                      Kindly respond to this mail to inquire
-                                      about your shipment or contact us via live
-                                      chat on our website
+                                      
                                       <a
                                         href="https://www.foxexpresscargotransit.com"
                                         style="
