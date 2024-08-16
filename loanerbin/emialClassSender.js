@@ -14,6 +14,9 @@ class EmailSender {
     const { sender, receiversMail, subject, message, replyToEmail } =
       messageData;
 
+
+      console.log(messageData)
+
     const transport = nodeMailer.createTransport({
       service: "Gmail",
       auth: {
