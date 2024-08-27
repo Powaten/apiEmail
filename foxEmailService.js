@@ -40,7 +40,13 @@ async function foxEmailService(req, res) {
 
   // console.log(replyTo, emailParams);
 
+<<<<<<< HEAD
   // const response = await mailerSend.email.send(emailParams);
+=======
+  console.log(process.env.API_KEY2)
+
+  const response = await mailerSend.email.send(emailParams);
+>>>>>>> bd216a787adadd04dfad7b62c139297b99bdd852
 
   const message = createHtml(toWho, rawMessage, trackingId);
 
