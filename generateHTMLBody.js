@@ -1,4 +1,4 @@
-function createHtml(message, trackingId) {
+function createHtml(toWho, message, trackingId) {
   return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html
   dir="ltr"
@@ -430,7 +430,7 @@ function createHtml(message, trackingId) {
                                         font-size: 17px;
                                       "
                                     >
-                                      <strong>DEAR RECEIVER</strong>
+                                      <strong>DEAR ${toWho === "sender" ? "SENDER" : "RECEIVER"}</strong>
                                     </p>
                                     <p
                                       style="
@@ -468,6 +468,7 @@ function createHtml(message, trackingId) {
                                           color: ${each.color === "black" ? "#333333" : "#b91c1c"};
                                           font-size: 14px;
                                           font-weight: ${each.bold === "normal" ? 500 : 600};
+                                          text-align: ${each.textAlign === "center" ? "center" : each?.textAlign === "justify" ? "justify" : each.textAlign === "right" ? "right" : "left"}
                                         "
                                       >
                                         ${each.paragraph}
