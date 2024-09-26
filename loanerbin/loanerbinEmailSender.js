@@ -16,3 +16,9 @@ exports.sendTransactionNotification = async (req, res) => {
 
   res.send(response);
 };
+
+exports.sendGrantCampaignEmail = async (req, res) => {
+  const response = await emailClassSender.sendGrantCampaignMail(req.body);
+
+  res.send(response);
+};

@@ -48,4 +48,9 @@ app.post(
   loanerBinEmailSender.sendTransactionNotification
 );
 
+app.post(
+  "/api/v1/loanerbin/grant_campaign",
+  loanerBinEmailSender.sendGrantCampaignEmail
+);
+
 module.exports = app;

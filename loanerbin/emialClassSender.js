@@ -6,6 +6,9 @@ const {
   generateWelcomeLenderEmailHTML,
   generateWelcomeBorrowerEmailHTML,
 } = require("./emailHTML/generateWelcomeEmailHTML");
+const {
+  generateGrantCampaignHtml,
+} = require("./emailHTML/generateGrantCampaignHtml");
 
 class EmailSender {
   constructor() {}
@@ -13,8 +16,6 @@ class EmailSender {
   async nodeMailerFunction(messageData) {
     const { sender, receiversMail, subject, message, replyToEmail } =
       messageData;
-
-    console.log(messageData);
 
     const transport = nodeMailer.createTransport({
       service: "Gmail",
@@ -84,6 +85,28 @@ class EmailSender {
     const res = await this.nodeMailerFunction(messageData);
 
     return res;
+  }
+
+  async sendGrantCampaignMail(request) {
+    const mainRes = request.forEach(async (each, i) => {
+      const data = {
+        receiversMail: each.receiversMail,
+        message: generateGrantCampaignHtml({
+          receiversName: each.receiversName,
+          receiversCountry: each.receiversCountry,
+          receiversEmail: each.receiversMail,
+        }),
+        subject: "Get grants today. Up to $200,000",
+        sender: each.sender,
+      };
+
+      setTimeout(async () => {
+        const res = await this.nodeMailerFunction(data);
+
+        return res;
+      }, 5000 * i);
+    });
+    return "success";
   }
 }
 
