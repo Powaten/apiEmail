@@ -18,50 +18,34 @@ async function foxEmailService(req, res) {
     message: rawMessage,
   } = req.body;
 
-  // const html = createHtml(message, trackingId);
-
-  // const sentFrom = new Sender(
-  //   "services@foxexpresscargotransit.com",
-  //   "services department"
-  // );
-  // const replyTo = new Sender(replyToEmail, "Alen whaten");
-
-  // const sentFrom = new Sender(companyEmail, sendersName);
-
-  // const recipients = [new Recipient(receiversMail, "")];
-
-  // const emailParams = new EmailParams()
-  // .setFrom(sentFrom)
-  // .setTo(recipients)
-  // .setReplyTo(replyTo)
-  // .setSubject(subject)
-  // .setHtml(html);
-  // .setText(message);
-
-  // console.log(replyTo, emailParams);
-
-  // const response = await mailerSend.email.send(emailParams);
-
-  // the second checl
-
   const message = createHtml(toWho, rawMessage, trackingId);
 
   const sender = {
     email: "foxexpresscargotransit@gmail.com",
-    password: "bwqb kykb jeut jhgq",
+    password: "rdpg rxzv jrpa vclx",
     name: sendersName,
   };
 
   const messageData = { sender, receiversMail, subject, message };
 
-  const response = await emailClassSender.nodeMailerFunction(messageData);
+  try {
+    const response = await emailClassSender.nodeMailerFunction(messageData);
 
-  res.send({
-    status: "success",
-    data: {
-      response,
-    },
-  });
+    res.send({
+      status: "success",
+      data: {
+        response,
+      },
+    });
+  } catch (err) {
+    res.send({
+      status: "error",
+      data: {
+        message: err.message,
+      },
+    });
+  }
+
   // res.send(true);
 }
 
