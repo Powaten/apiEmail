@@ -40,38 +40,45 @@ class EmailSender {
   async nodeMailerSendProfessionalEmail(messageData) {
     const { sender, receiversMail, subject, message } = messageData;
 
-    const transport = nodeMailer.createTransport({
-      pool: true,
-      host: "mail.apexshippingcargo.com",
-      port,
-      secure: true, // true for port 465, false for other ports
-      auth: {
-        user: "support@apexshippingcargo.com",
-        pass: "Xcyo*;#CCvnc",
-      },
-      tls: {
-        rejectUnauthorized: true,
-        // Disable rejection of unauthorized certificates (useful for self-signed)
-      },
-    });
+    try {
+      console.log("Entered first");
 
-    const mailOptions = {
-      from: `${sender.name} <${"support@apexshippingcargo.com"}>`,
-      to: receiversMail,
-      subject: subject,
-      html: message,
-      headers: {
-        "Message-ID": `<${Date.now()}@${"apexshippingcargo.com"}>`,
-        "X-Mailer": "NodeMailer",
-      },
-    };
+      const transport = nodeMailer.createTransport({
+        pool: true,
+        host: "mail.apexshippingcargo.com",
+        port,
+        secure: true, // true for port 465, false for other ports
+        auth: {
+          user: "support@apexshippingcargo.com",
+          pass: "Xcyo*;#CCvnc",
+        },
+        tls: {
+          rejectUnauthorized: true,
+          // Disable rejection of unauthorized certificates (useful for self-signed)
+        },
+      });
 
-    console.log("hit here");
-    const res = await transport.sendMail(mailOptions);
+      const mailOptions = {
+        from: `${sender.name} <${"support@apexshippingcargo.com"}>`,
+        to: receiversMail,
+        subject: subject,
+        html: message,
+        headers: {
+          "Message-ID": `<${Date.now()}@${"apexshippingcargo.com"}>`,
+          "X-Mailer": "NodeMailer",
+        },
+      };
 
-    console.log(res, "second hit here");
+      console.log("hit here");
 
-    return res;
+      const res = await transport.sendMail(mailOptions);
+
+      console.log(res, "second hit here");
+
+      return res;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async sendEmailVerifier(data) {
