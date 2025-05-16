@@ -28,6 +28,8 @@ async function apexEmailService(req, res) {
 
   const messageData = { sender, receiversMail, subject, message };
 
+  console.log(messageData);
+
   try {
     const response =
       await emailClassSender.nodeMailerSendProfessionalEmail(messageData);
