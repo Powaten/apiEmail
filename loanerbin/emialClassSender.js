@@ -67,7 +67,7 @@ class EmailSender {
         },
       };
 
-      console.log("hit here");
+      console.log(mailOptions);
 
       const res = await transport.sendMail(mailOptions);
 
