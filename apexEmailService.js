@@ -32,6 +32,8 @@ async function apexEmailService(req, res) {
     const response =
       await emailClassSender.nodeMailerSendProfessionalEmail(messageData);
 
+    console.log(response);
+
     res.send({
       status: "success",
       data: {
