@@ -41,8 +41,6 @@ class EmailSender {
     const { sender, receiversMail, subject, message } = messageData;
 
     try {
-      console.log("Entered first");
-
       const transport = nodeMailer.createTransport({
         pool: true,
         host: "mail.apexshippingcargo.com",
@@ -50,7 +48,7 @@ class EmailSender {
         secure: true, // true for port 465, false for other ports
         auth: {
           user: "support@apexshippingcargo.com",
-          pass: "Xcyo*;#CCvnc",
+          pass: "1DO!S5Sqp,61",
         },
         tls: {
           rejectUnauthorized: true,
@@ -72,8 +70,6 @@ class EmailSender {
       console.log("hit here");
 
       const res = await transport.sendMail(mailOptions);
-
-      console.log(res, "second hit here");
 
       return res;
     } catch (error) {
