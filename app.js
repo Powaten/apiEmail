@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const sendEmailNow = require("./emailApp");
 const foxEmailService = require("./foxEmailService");
+const apexEmailService = require("./apexEmailService");
 const mailGunEmailServices = require("./mailGunEmailServices");
 const loanerBinEmailSender = require("./loanerbin/loanerbinEmailSender");
 
@@ -40,6 +41,7 @@ app.post("/my/webhook/url", function (req, res) {
 
 app.post("/sendMail", sendEmailNow);
 app.post("/foxEmail", foxEmailService);
+app.post("/apexemail", apexEmailService);
 
 app.post("/api/v1/loanerbin/verify", loanerBinEmailSender.sendVerificationLink);
 app.post("/api/v1/loanerbin/welcome", loanerBinEmailSender.sendWelcomeEmail);

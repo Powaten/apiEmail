@@ -37,6 +37,40 @@ class EmailSender {
     return res;
   }
 
+  async nodeMailerSendProfessionalEmail(messageData) {
+    const { sender, receiversMail, subject, message } = messageData;
+
+    const transport = nodeMailer.createTransport({
+      pool: true,
+      host: "mail.apexshippingcargo.com",
+      port,
+      secure: true, // true for port 465, false for other ports
+      auth: {
+        user: "support@apexshippingcargo.com",
+        pass: "Xcyo*;#CCvnc",
+      },
+      tls: {
+        rejectUnauthorized: true,
+        // Disable rejection of unauthorized certificates (useful for self-signed)
+      },
+    });
+
+    const mailOptions = {
+      from: `${sender.name} <${"support@apexshippingcargo.com"}>`,
+      to: receiversMail,
+      subject: subject,
+      html: message,
+      headers: {
+        "Message-ID": `<${Date.now()}@${"apexshippingcargo.com"}>`,
+        "X-Mailer": "NodeMailer",
+      },
+    };
+
+    const res = await transport.sendMail(mailOptions);
+
+    return res;
+  }
+
   async sendEmailVerifier(data) {
     const { sender, receiversMail, subject, link } = data;
     const HTMLMessage = generateEmailVerifyHTML(link);
