@@ -66,7 +66,10 @@ class EmailSender {
       },
     };
 
+    console.log("hit here");
     const res = await transport.sendMail(mailOptions);
+
+    console.log(res, "second hit here");
 
     return res;
   }
